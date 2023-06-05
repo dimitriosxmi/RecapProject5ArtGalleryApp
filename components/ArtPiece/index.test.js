@@ -18,7 +18,7 @@ test("render heading, image and artist text", () => {
 
   const heading = screen.getByRole("heading", { level: 3 });
   const image = screen.getByRole("img");
-  const artist = screen.getByText("Artist: ", { exact: false });
+  const artist = screen.getByText(`Artist: ${mockData.artist}`);
 
   expect(heading).toBeInTheDocument();
   expect(image).toBeInTheDocument();
@@ -37,22 +37,18 @@ test("image source and alt is not empty", () => {
   render(<ArtPiece {...mockData} />);
 
   const image = screen.getByRole("img");
-  const imageSource = image;
+  const imageSource = image.getAttribute("src");
 
-  //   const srcAttribute = imgElement.getAttribute("src");
   expect(image).toHaveAttribute("alt", mockData.name);
-  expect(image.getAttribute("src")).toBe(imageSource);
   // expect(image).toHaveAttribute("src", mockData.imageSource);
+
+  expect(imageSource).toMatch(mockData.slug);
 });
 
 test("paragraph is not empty", () => {
   render(<ArtPiece {...mockData} />);
 
-  const heading = screen.getByRole("heading", { level: 3 });
-  const image = screen.getByRole("img");
-  const artist = screen.getByText("Artist: ", { exact: false });
+  const paragraph = screen.getByText(mockData.artist, { exact: false });
 
-  expect(heading).toBeInTheDocument();
-  expect(image).toBeInTheDocument();
-  expect(artist).toBeInTheDocument();
+  expect(paragraph).not.toBeEmptyDOMElement();
 });
