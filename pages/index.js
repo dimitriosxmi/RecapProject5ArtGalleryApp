@@ -1,4 +1,5 @@
 import ArtPieces from "@/components/ArtPieces";
+import Spotlight from "@/components/Spotlight";
 import useSWR from "swr";
 
 export default function HomePage() {
@@ -26,7 +27,22 @@ export default function HomePage() {
   }
   //#endregion
 
-  return <ArtPieces pieces={data} />;
+  // Random function for Spotlight Component
+
+  function randomArtPiece(data) {
+    const randomNumber = Math.floor(Math.random() * data.length);
+    return data[randomNumber];
+  }
+
+  const { imageSource, artist, name } = randomArtPiece(data);
+
+  return (
+    <>
+      <Spotlight imageSource={imageSource} artist={artist} name={name} />
+      <hr></hr>
+      <ArtPieces pieces={data} />
+    </>
+  );
 }
 
 const pieces = [
