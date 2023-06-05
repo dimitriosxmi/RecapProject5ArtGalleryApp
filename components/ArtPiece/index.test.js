@@ -40,8 +40,9 @@ test("image source and alt is not empty", () => {
   const imageSource = image.getAttribute("src");
 
   expect(image).toHaveAttribute("alt", mockData.name);
-  // expect(image).toHaveAttribute("src", mockData.imageSource);
-
+  // We got a temporary work around to check for the src
+  // because of react's or nextjs's weird <Image />
+  // component handling that changes the URL.
   expect(imageSource).toMatch(mockData.slug);
 });
 
