@@ -1,12 +1,7 @@
 import ArtPieces from "@/components/ArtPieces";
 import Spotlight from "@/components/Spotlight";
-import useSWR from "swr";
 
-export default function HomePage() {
-  const URL = "https://example-apis.vercel.app/api/art";
-
-  const { data, error, isLoading } = useSWR(URL);
-
+export default function HomePage({ data, error, isLoading }) {
   //#region Data fetch handling
   if (error) {
     return (
