@@ -1,6 +1,15 @@
 import ArtPieces from "@/components/ArtPieces";
 import Spotlight from "@/components/Spotlight";
 import useSWR from "swr";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  background-color: gray;
+  width: 100vw;
+  height: 4px;
+`;
+
+
 
 export default function HomePage() {
   const URL = "https://example-apis.vercel.app/api/art";
@@ -38,8 +47,9 @@ export default function HomePage() {
 
   return (
     <>
+      
       <Spotlight imageSource={imageSource} artist={artist} name={name} />
-      <hr></hr>
+      <StyledContainer />
       <ArtPieces pieces={data} />
     </>
   );
