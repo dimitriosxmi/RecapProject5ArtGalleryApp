@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-
 export default function ArtPiece({ name, imageSource, artist }) {
   return (
     <li>
