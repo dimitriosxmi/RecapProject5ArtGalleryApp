@@ -17,6 +17,7 @@ const StyledName = styled.span`
 
 const SpotlightList = styled(StyledList)`
   background-color: rgb(32, 33, 36);
+  flex-direction: column;
 `;
 
 const StyledMainHeader = styled.h1`
